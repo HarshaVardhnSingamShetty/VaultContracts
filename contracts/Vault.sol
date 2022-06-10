@@ -12,8 +12,11 @@ contract Vault {
     mapping(address => uint) public rewardBalance;
     constructor(address _tokenAddress, address _rewardTokenAddress) {
         
+        require( _tokenAddress != address(0), "Invalid Vault Token Address" ); 
+        require( _rewardTokenAddress != address(0), "Invalid Reward Token Address" );        
         vTokencontract = VToken(_tokenAddress);
         rewardContract = RewardToken(_rewardTokenAddress);
+        vTokencontract.totalSupply();
     }
     modifier isLocked(){
         require(locked==false, "LOCKED!");
@@ -36,8 +39,6 @@ contract Vault {
         tokenBalance[msg.sender]-=amount;
         vTokencontract.transfer(msg.sender, amount);
         rewardBalance[msg.sender]-=amount;
-        rewardContract.burnReward(msg.sender, amount);
-        
-        
+        rewardContract.burnReward(msg.sender, amount); 
     }
 }

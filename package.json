@@ -1,0 +1,32 @@
+{
+  "name": "vault",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HarshaVardhnSingamShetty/VaultContracts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HarshaVardhnSingamShetty/VaultContracts/issues"
+  },
+  "homepage": "https://github.com/HarshaVardhnSingamShetty/VaultContracts#readme",
+  "dependencies": {
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@openzeppelin/contracts": "^4.6.0",
+    "chai": "^4.3.6",
+    "dotenv": "^16.0.1",
+    "ethereum-waffle": "^3.4.4",
+    "hardhat": "^2.9.9"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.6",
+    "@openzeppelin/hardhat-upgrades": "^1.18.1",
+    "ethers": "^5.6.8"
+  }
+}
