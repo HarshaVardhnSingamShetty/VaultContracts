@@ -3,17 +3,19 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "./RewardToken.sol";
 import "./VToken.sol";
-
+import "@openzeppelin/contracts/utils/Address.sol";
 contract Vault {
-    VToken vTokencontract;
-    RewardToken rewardContract;
+    using Address for address;
+    VToken public vTokencontract;
+    RewardToken public rewardContract;
     bool locked = false;
     mapping(address => uint) public tokenBalance;
     mapping(address => uint) public rewardBalance;
     constructor(address _tokenAddress, address _rewardTokenAddress) {
         
-        require( _tokenAddress != address(0), "Invalid Vault Token Address" ); 
-        require( _rewardTokenAddress != address(0), "Invalid Reward Token Address" );        
+        require( _tokenAddress.isContract(), "Invalid Vault Token Address");
+        //require( _tokenAddress != address(0), "Invalid Vault Token Address" ); 
+        require( _rewardTokenAddress.isContract(), "Invalid Reward Token Address" );        
         vTokencontract = VToken(_tokenAddress);
         rewardContract = RewardToken(_rewardTokenAddress);
         vTokencontract.totalSupply();

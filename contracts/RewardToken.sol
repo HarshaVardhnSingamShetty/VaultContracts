@@ -11,7 +11,7 @@ contract RewardToken is ERC20 {
         admin = msg.sender;
     }
 
-    function generateReward(address to, uint amount) onlyVault external {
+    function generateReward(address to, uint amount) onlyVault external  {
         _mint(to, amount);
 
     }
